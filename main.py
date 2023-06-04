@@ -19,13 +19,12 @@ rendimiento_segundo_cambio = datos['Segundo_cambio'].to_numpy()
 ### --- COMPROBACION --- ###
 # funcion: ttest_1samp: prueba de hipotesis t de una muestra, compara la media
 #  con la hipotesis nula y determina si es significativamente diferente al valor de referencia
-# entrada: muestra, valor de referencia
+# entrada: a: rendimiennto, popmean: miu h0, nan_policy: omit, alternative: greater
 # salida: estadistica de prueba, valor p
 
 def t_test(rendimiento):
         media_muestral = np.mean(rendimiento)
         desviacion_estandar_muestral = np.std(rendimiento, ddof=1)  # ddof=1 para utilizar la fórmula de la desviación estándar muestral
-        valor_referencia = 0.7 * media_muestral
         # a: rendimiennto, popmean: miu h0, nan_policy: omit, alternative: greater
         t_stat, p_value = stats.ttest_1samp(a=rendimiento, popmean=70, nan_policy='omit', alternative='greater')
         print(p_value)
