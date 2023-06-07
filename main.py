@@ -79,7 +79,7 @@ def mle_desvesta(rendimiento):
     promedio = stats.mean(rendimiento)
     for xi in rendimiento:
         sumatoria = (xi - promedio) ** 2
-    varianza = (1 / len(rendimiento) - 1) * sumatoria
+    varianza = (1 / len(rendimiento)) * sumatoria
     return math.sqrt(varianza)
 
 # metodo empírico
