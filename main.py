@@ -24,13 +24,11 @@ rendimiento_segundo_cambio = datos['Segundo_cambio'].to_numpy()
 # salida: estadistica de prueba, valor p
 
 def t_test(rendimiento):
-    media_muestral = np.mean(rendimiento)
-    desviacion_estandar_muestral = np.std(rendimiento,
-                                          ddof=1)  # ddof=1 para utilizar la fórmula de la desviación estándar muestral
-    # a: rendimiennto, popmean: miu h0, nan_policy: omit, alternative: greater
-    t_stat, p_value = stats.ttest_1samp(a=rendimiento, popmean=70, nan_policy='omit', alternative='greater')
-    print(p_value)
-
+        media_muestral = np.mean(rendimiento)
+        desviacion_estandar_muestral = np.std(rendimiento, ddof=1)  # ddof=1 para utilizar la fórmula de la desviación estándar muestral
+        # a: rendimiennto, popmean: miu h0, nan_policy: omit, alternative: greater
+        t_stat, p_value = stats.ttest_1samp(a=rendimiento, popmean=70, nan_policy='omit', alternative='greater')
+        print(p_value)
 
 ### INICIAL ###
 print("--------------------------------Inicial--------------------------------")
@@ -56,21 +54,20 @@ t_test(rendimiento_segundo_cambio)
 
 
 # INICIAL VS PRIMER CAMBIO
-print("--------------------------------I VS P--------------------------------")
-t_stat_ip, valor_p_ip = stats.ttest_ind(a=rendimiento_inicial, b=rendimiento_primer_cambio, nan_policy='omit',
-                                        alternative='greater')
+print("--------------------------------P VS I--------------------------------")
+t_stat_ip, valor_p_ip = stats.ttest_ind(a=rendimiento_primer_cambio, b=rendimiento_inicial, nan_policy='omit', alternative='greater')
 print(valor_p_ip)
 
-# PRIMER CAMBIO VS SEGUNDO CAMBIO
-print("--------------------------------P VS S--------------------------------")
-t_stat_ps, valor_p_ps = stats.ttest_ind(a=rendimiento_primer_cambio, b=rendimiento_segundo_cambio, nan_policy='omit',
-                                        alternative='greater')
-print(valor_p_ps)
 # INICIAL VS SEGUNDO CAMBIO
-print("--------------------------------I VS S--------------------------------")
-t_stat_is, valor_p_is = stats.ttest_ind(a=rendimiento_inicial, b=rendimiento_segundo_cambio, nan_policy='omit',
-                                        alternative='greater')
+print("--------------------------------S VS I--------------------------------")
+t_stat_is, valor_p_is = stats.ttest_ind(a=rendimiento_segundo_cambio, b=rendimiento_inicial, nan_policy='omit', alternative='greater')
 print(valor_p_is)
+
+# PRIMER CAMBIO VS SEGUNDO CAMBIO
+print("--------------------------------S VS P--------------------------------")
+t_stat_ps, valor_p_ps = stats.ttest_ind(a=rendimiento_segundo_cambio, b=rendimiento_primer_cambio, nan_policy='omit', alternative='greater')
+print(valor_p_ps)
+
 
 
 # METODO MAXIMA VEROSIMILITUD
