@@ -84,7 +84,7 @@ def mle_desvesta(rendimiento):
     sumatoria = 0
     promedio = np.mean(rendimiento)
     for xi in rendimiento:
-        sumatoria = (xi - promedio) ** 2
+        sumatoria = sumatoria + (xi - promedio) ** 2
     varianza = (1 / len(rendimiento)) * sumatoria
     return math.sqrt(varianza)
 
