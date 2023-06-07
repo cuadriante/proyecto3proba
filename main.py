@@ -93,17 +93,17 @@ def mle_desvesta(rendimiento):
 ### INICIAL ###
 print("----------------------Desviaciones Inicial----------------------")
 print(mle_desvesta(rendimiento_inicial))
-_, std_inicial = stats.norm.fit(rendimiento_inicial)
+_, std_inicial = stats.norm.fit(rendimiento_inicial, loc=np.mean(rendimiento_inicial))
 print(std_inicial)
 
 ### PRIMER CAMBIO ###
 print("-------------------Desviaciones Primer Cambio-------------------")
 print(mle_desvesta(rendimiento_primer_cambio))
-_, std_primer = stats.norm.fit(rendimiento_primer_cambio)
+_, std_primer = stats.norm.fit(rendimiento_primer_cambio, loc=np.mean(rendimiento_primer_cambio))
 print(std_primer)
 
 ### SEGUNDO CAMBIO ###
 print("------------------Desviaciones Segundo Cambio-------------------")
 print(mle_desvesta(rendimiento_segundo_cambio))
-_, std_segundo = stats.norm.fit(rendimiento_segundo_cambio)
+_, std_segundo = stats.norm.fit(rendimiento_segundo_cambio, loc=np.mean(rendimiento_segundo_cambio))
 print(std_segundo)
